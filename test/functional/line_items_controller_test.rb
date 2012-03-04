@@ -1,3 +1,11 @@
+#---
+# Excerpted from "Agile Web Development with Rails",
+# published by The Pragmatic Bookshelf.
+# Copyrights apply to this code. It may not be used to create training material, 
+# courses, books, articles, and the like. Contact us if you are in doubt.
+# We make no guarantees that this code is fit for any purpose. 
+# Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
+#---
 require 'test_helper'
 
 class LineItemsControllerTest < ActionController::TestCase
@@ -16,13 +24,13 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-test "should create line_item" do
-assert_difference('LineItem.count' ) do
-post :create, :product_id => products(:ruby).id
-end
-assert_redirected_to cart_path(assigns(:line_item).cart)
-end
+  test "should create line_item" do
+    assert_difference('LineItem.count') do
+      post :create, product_id: products(:ruby).id
+    end
 
+    assert_redirected_to store_url
+  end
 
   test "should show line_item" do
     get :show, id: @line_item
@@ -44,6 +52,17 @@ end
       delete :destroy, id: @line_item
     end
 
-    assert_redirected_to Cart.find(session[:cart_id])
+    assert_redirected_to line_items_path
+  end
+
+  test "should create line_item via ajax" do
+    assert_difference('LineItem.count') do
+      xhr :post, :create, :product_id => products(:ruby).id
+    end
+
+    assert_response :success
+    assert_select_jquery :html, '#cart' do
+      assert_select 'tr#current_item td', /Programming Ruby 1.9/
+    end
   end
 end

@@ -6,8 +6,12 @@
 # We make no guarantees that this code is fit for any purpose. 
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
-# Load the rails application
-require File.expand_path('../application', __FILE__)
+class AddPriceToLineItem < ActiveRecord::Migration
+  def change
+    add_column :line_items, :price, :decimal
+    LineItem.all.each do |li|
+      li.price = li.product.price
+    end
 
-# Initialize the rails application
-Depot::Application.initialize!
+  end
+end

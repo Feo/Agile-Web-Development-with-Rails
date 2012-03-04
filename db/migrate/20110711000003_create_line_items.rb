@@ -6,8 +6,13 @@
 # We make no guarantees that this code is fit for any purpose. 
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
-# Load the rails application
-require File.expand_path('../application', __FILE__)
+class CreateLineItems < ActiveRecord::Migration
+  def change
+    create_table :line_items do |t|
+      t.integer :product_id
+      t.integer :cart_id
 
-# Initialize the rails application
-Depot::Application.initialize!
+      t.timestamps
+    end
+  end
+end

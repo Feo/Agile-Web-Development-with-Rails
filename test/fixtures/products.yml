@@ -1,4 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
   title: MyString
@@ -11,6 +12,7 @@ two:
   description: MyText
   image_url: MyString
   price: 9.99
+#START:ruby
 
 ruby: 
   title:       Programming Ruby 1.9
