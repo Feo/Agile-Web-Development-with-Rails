@@ -3,7 +3,7 @@
 one:
 #START_HIGHLIGHT
   product: ruby
-  cart: one
+  order: one
 #END_HIGHLIGHT
 
 two:
