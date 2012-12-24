@@ -7,6 +7,8 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 class StoreController < ApplicationController
+  skip_before_filter :authorize
+
   def index
     @products = Product.order(:title)
     @cart = current_cart
