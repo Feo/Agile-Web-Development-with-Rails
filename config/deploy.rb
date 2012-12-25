@@ -1,10 +1,16 @@
+require "rvm/capistrano"
+
 set :user, 'feo'
 set :domain, '172.18.6.8'
 set :application, "depot"
 set :repository,  "git://github.com/Feo/Agile-Web-Development-with-Rails.git"
 set :deploy_to, "/home/feo/deploy"
+set :normalize_asset_timestamps, false
 
-#default_run_options[:pty] = true
+set :rvm_type, :system
+
+#set :shell, false
+#default_run_options[:shell] = false
 
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
@@ -13,6 +19,7 @@ role :web, domain                         # Your HTTP server, Apache/etc
 role :app, domain                          # This may be the same as your `Web` server
 role :db,  domain, :primary => true # This is where Rails migrations will run
 role :db,  domain
+
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
