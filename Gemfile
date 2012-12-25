@@ -9,6 +9,9 @@ gem 'sqlite3'
 gem 'therubyracer'
 gem 'execjs'
 
+group :production do
+  gem 'mysql', '2.8.1'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,7 +37,7 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
